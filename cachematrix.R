@@ -12,7 +12,7 @@
 ##                  from the cache.
 
 
-## makeCacheMatrix creates a special "matrix", which is really a list 
+## makeCacheMatrix creates a special list 
 ## containing a function to
 ## set the value of the matrix
 ## get the value of the matrix
@@ -20,7 +20,17 @@
 ## get the value of the inverse of the matrix
 
 makeCacheMatrix <- function(x = matrix()) {
-
+        i <- NULL
+        set <- function(y){
+                x <<- y
+                i <<- NULL
+        }
+        get <- function() x
+        setsolve <- function(solve) i <<- solve
+        getsolve <- function() i
+        list(set= set, get = get,
+             setsolve = setsolve,
+             getsolve = getsolve)
 }
 
 
